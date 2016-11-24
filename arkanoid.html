@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Arkanoid pure javascript</title>
+<script src="keys.js"></script>
+<script src="engine.js"></script>
+<script src="graph.js"></script>
+<script src="player.js"></script>
+<script src="grid.js"></script>
+<script src="ball.js"></script>
+</head>
+<body>
+    <canvas id="canvas" width="640" height="480"></canvas>
+    <script>
+        init();
+
+        grid.generate(8, 60, 20, 'red');
+        player.init(width/2, 200, 'blue');
+        ball.init(player.x+Math.ceil(player.width / 2), player.y-5, 5, 'green');
+
+        var game = function() {
+            fillAll('#ADD8E6');
+            grid.draw();
+
+            ball.collision();
+
+            ball.move();
+            ball.draw();
+
+            player.move();
+            player.draw();
+        };
+        startGame(game);   
+    </script>
+</body>
+</html>
